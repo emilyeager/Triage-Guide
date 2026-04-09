@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Triage Guide</title>
+	<style>
+		:root{--bg:#f7f9fc;--card:#ffffff;--brand:#0366d6;--muted:#556}
+		html,body{height:100%}
+		body{font-family:Segoe UI,Arial,sans-serif;background:var(--bg);color:#111;margin:0}
+		.container{max-width:1200px;margin:6vh auto;padding:28px;background:var(--card);border-radius:10px;box-shadow:0 8px 24px rgba(20,30,50,.08)}
+		h1{margin:0 0 8px;font-size:2rem}
+		p.lead{margin:0 0 18px;color:var(--muted)}
+		ul.links{list-style:none;padding:0;margin:0}
+		ul.links li{margin:10px 0}
+		a.btn{display:inline-block;padding:10px 14px;border-radius:8px;text-decoration:none;border:2px solid transparent;transition:box-shadow .12s ease,border-color .12s ease}
+		a.primary{background:var(--brand);color:white;border:2px solid var(--brand)}
+		a.secondary{border:2px solid var(--brand);color:var(--brand);background:transparent}
+		/* Accessible focus styles */
+		a.btn:focus,
+		a.btn:focus-visible{
+			outline:0;
+			box-shadow:0 0 0 4px rgba(3,102,214,0.18);
+			border-color:var(--brand);
+		}
+		footer{margin-top:18px;font-size:.9rem;color:var(--muted)}
+	</style>
+</head>
+<body>
+	<main class="container" role="main">
+		<h1>Triage Guide</h1>
+		<nav aria-label="Triage resources">
+			<ul class="links">
+				<li>
+					<a id="etek-link" class="btn secondary" href="etek.html">ETEK Guidelines</a>
+				</li>
+				<li>
+					<a id="monash-link" class="btn secondary" href="monash.html">Monash Health Prompt Protocols</a>
+				</li>
+				<li>
+					<a id="triage-link" class="btn secondary" href="triage-question.html">Triage Question Guides</a>
+				</li>
+				<li>
+					<a id="useful-link" class="btn secondary" href="useful-websites.html">Useful Websites</a>
+				</li>
+			</ul>
+		</nav>
+
+		<footer>
+			Last updated on the 9/4/2026 by Emily Eager
+		</footer>
+	</main>
+</body>
+</html>
+

@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ETEK Guidelines — Triage Guide</title>
+  <style>
+    :root{--bg:#f7f9fc;--card:#ffffff;--brand:#0366d6;--muted:#556}
+    html,body{height:100%}
+    body{font-family:Segoe UI,Arial,sans-serif;background:var(--bg);color:#111;margin:0}
+  .container{max-width:1200px;margin:6vh auto;padding:28px;background:var(--card);border-radius:10px;box-shadow:0 8px 24px rgba(20,30,50,.08)}
+    h1{margin:0 0 8px;font-size:1.6rem}
+    p.lead{margin:0 0 18px;color:var(--muted)}
+  /* Make the link list a vertical stack with an even gap between items */
+  ul.links{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:12px}
+  ul.links li{margin:0}
+    /* Render resource links as plain inline text (no boxed buttons) */
+  /* Use inline-block so anchors have consistent height and respond well to gap spacing */
+  a.btn{display:inline-block;text-decoration:underline;padding:0;border:0;background:transparent;border-radius:0;color:var(--brand);transition:color .12s ease;line-height:1.4}
+    a.primary{background:transparent;color:var(--brand);border:0}
+    a.secondary{background:transparent;color:var(--brand);border:0}
+    a.btn:hover{color:#024ea6}
+    /* Accessible focus styles: visible outline for keyboard users */
+    a.btn:focus,
+    a.btn:focus-visible{
+      outline:3px solid rgba(3,102,214,0.18);
+      outline-offset:2px;
+      box-shadow:none;
+    }
+    .back{display:inline-block;margin-top:18px;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <main class="container" role="main">
+  <h1>ETEK Guidelines</h1>
+
+  <p class="back"><a href="index.html">← Back to Triage Guide Homepage</a></p>
+
+    <nav aria-label="All ETEK and additional resources">
+      <ul class="links">
+        <li>
+          <a id="ats" class="btn secondary" href="files/ats.pdf" data-pdf="files/ats.pdf" target="_blank" rel="noopener noreferrer">ATS Timeframe</a>
+        </li>
+        <li>
+          <a id="descriptors" class="btn secondary" href="files/descriptors.pdf" data-pdf="files/descriptors.pdf" target="_blank" rel="noopener noreferrer">Descriptors for Categories</a>
+        </li>
+        <li>
+          <a id="full-etek" class="btn secondary" href="files/etekfull.pdf" data-pdf="files/etekfull.pdf" target="_blank" rel="noopener noreferrer">Full ETEK Guide</a>
+        </li>
+        <li>
+          <a id="redflags" class="btn secondary" href="files/redflags.pdf" data-pdf="files/redflags.pdf" target="_blank" rel="noopener noreferrer">Identify Red Flags</a>
+        </li>
+        <li>
+          <a id="mental-health" class="btn secondary" href="files/mentalhealth.pdf" data-pdf="files/mentalhealth.pdf" target="_blank" rel="noopener noreferrer">Mental Health Presentations</a>
+        </li>
+        <li>
+          <a id="ocular" class="btn secondary" href="files/ocular.pdf" data-pdf="files/ocular.pdf" target="_blank" rel="noopener noreferrer">Ocular Emergencies</a>
+        </li>
+        <li>
+          <a id="paediatrics" class="btn secondary" href="files/paediatrics.pdf" data-pdf="files/paediatrics.pdf" target="_blank" rel="noopener noreferrer">Paediatrics</a>
+        </li>
+        <li>
+          <a id="pain" class="btn secondary" href="files/pain.pdf" data-pdf="files/pain.pdf" target="_blank" rel="noopener noreferrer">Pain Score</a>
+        </li>
+        <li>
+          <a id="primary" class="btn secondary" href="files/primarysurvey.pdf" data-pdf="files/primarysurvey.pdf" target="_blank" rel="noopener noreferrer">Primary Survey</a>
+        </li>
+      </ul>
+    </nav>
+
+  <!-- PDFs will open in a new tab by default; inline viewer removed per preference -->
+
+    
+  </main>
+</body>
+</html>
