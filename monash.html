@@ -12,6 +12,10 @@
     h1{margin:0 0 8px;font-size:1.6rem}
     ul.links{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:12px}
     ul.links li{margin:0}
+      button.section-heading{font-weight:700;text-decoration:underline;margin-top:12px;color:#111;background:none;border:0;padding:0;font:inherit;cursor:pointer;display:block;text-align:left}
+      .section-heading, button.section-heading{font-weight:700;text-decoration:underline;color:#111;margin-top:6px}
+      .links-list{display:block !important;margin:6px 0 0;padding-left:16px}
+    .links-list{display:block !important;margin:6px 0 0;padding-left:16px}
     a.link{color:var(--brand);text-decoration:underline}
     a.link:focus,a.link:focus-visible{outline:3px solid rgba(3,102,214,0.18);outline-offset:2px}
     .back{display:inline-block;margin-top:18px;color:var(--muted)}
@@ -26,21 +30,85 @@
 
     <nav aria-label="Monash prompt protocols">
       <ul class="links">
-        <li><a class="link" href="files/ambulanceoffloads.pdf" target="_blank" rel="noopener noreferrer">Ambulance Offloads</a></li>
-        <li><a class="link" href="files/clinicinclusionexclusioncriteria.pdf" target="_blank" rel="noopener noreferrer">Clinic Inclusion/Exclusion Criteria</a></li>
-        <li><a class="link" href="files/codestrokeadults.pdf" target="_blank" rel="noopener noreferrer">Code Stroke - Adults</a></li>
-        <li><a class="link" href="files/codestrokepaediatrics.pdf" target="_blank" rel="noopener noreferrer">Code Stroke - Paediatrics</a></li>
-        <li><a class="link" href="files/divertedattriage.pdf" target="_blank" rel="noopener noreferrer">Diverted or Discharged at Triage</a></li>
-        <li><a class="link" href="files/earlypregnancybleeding.pdf" target="_blank" rel="noopener noreferrer">Early Pregnancy Bleeding</a></li>
-        <li><a class="link" href="files/pregnancyassessment.pdf" target="_blank" rel="noopener noreferrer">Pregnancy Assessment</a></li>
-        <li><a class="link" href="files/pregnancyassessmenttriagetool.pdf" target="_blank" rel="noopener noreferrer">Pregnancy Assessment Triage Tool</a></li>
-        <li><a class="link" href="files/ppcccriteria.pdf" target="_blank" rel="noopener noreferrer">Priority Primary Care Centre Criteria</a></li>
-        <li><a class="link" href="files/sepsis.pdf" target="_blank" rel="noopener noreferrer">Sepsis</a></li>
-        <li><a class="link" href="files/timeisspine.pdf" target="_blank" rel="noopener noreferrer">Time is Spine</a></li>
-        <li><a class="link" href="files/traumaresponseadults.pdf" target="_blank" rel="noopener noreferrer">Trauma Response - Adults</a></li>
-        <li><a class="link" href="files/traumaresponsepaediatrics.pdf" target="_blank" rel="noopener noreferrer">Trauma Response - Paediatrics</a></li>
+        <li class="section">
+          <button class="section-heading" aria-expanded="true" aria-controls="s-ambulance" id="btn-ambulance">Ambulance</button>
+          <ul id="s-ambulance" class="links-list">
+            <li><a class="link" href="files/ambulanceoffloads.pdf" target="_blank" rel="noopener noreferrer">Ambulance Offloads</a></li>
+          </ul>
+        </li>
+
+        <li class="section">
+          <button class="section-heading" aria-expanded="true" aria-controls="s-clinic" id="btn-clinic">Clinic</button>
+          <ul id="s-clinic" class="links-list">
+            <li><a class="link" href="files/clinicinclusionexclusioncriteria.pdf" target="_blank" rel="noopener noreferrer">Clinic Inclusion/Exclusion Criteria</a></li>
+            </ul>
+        </li>
+
+        <li class="section">
+          <button class="section-heading" aria-expanded="true" aria-controls="s-triage" id="btn-triage">Diverted/Discharged</button>
+          <ul id="s-triage" class="links-list">
+            <li><a class="link" href="files/divertedattriage.pdf" target="_blank" rel="noopener noreferrer">Diverted/Discharged at Triage</a></li>
+          </ul>
+        </li>
+
+        <li class="section">
+          <button class="section-heading" aria-expanded="true" aria-controls="s-model-of-care" id="btn-model-of-care">Model of Care</button>
+          <ul id="s-model-of-care" class="links-list">
+            <li><a class="link" href="files/modelofcare.pdf" target="_blank" rel="noopener noreferrer">Model of Care Revision</a></li>
+          </ul>
+        </li>
+
+        <li class="section">
+          <button class="section-heading" aria-expanded="true" aria-controls="s-pregnancy" id="btn-pregnancy">Pregnancy</button>
+          <ul id="s-pregnancy" class="links-list">
+            <li><a class="link" href="files/earlypregnancybleeding.pdf" target="_blank" rel="noopener noreferrer">Early Pregnancy Bleeding</a></li>
+            <li><a class="link" href="files/pregnancyassessment.pdf" target="_blank" rel="noopener noreferrer">Pregnancy Assessment</a></li>
+            <li><a class="link" href="files/pregnancyassessmenttriagetool.pdf" target="_blank" rel="noopener noreferrer">Pregnancy Assessment Triage Tool</a></li>
+          </ul>
+        </li>
+
+        <li class="section">
+          <button class="section-heading" aria-expanded="true" aria-controls="s-primary" id="btn-primary">Primary Primary Care Centre</button>
+          <ul id="s-primary" class="links-list">
+            <li><a class="link" href="files/ppcccriteria.pdf" target="_blank" rel="noopener noreferrer">Priority Primary Care Centre Criteria</a></li>
+          </ul>
+        </li>
+
+        <li class="section">
+          <button class="section-heading" aria-expanded="true" aria-controls="s-sepsis" id="btn-sepsis">Sepsis</button>
+          <ul id="s-sepsis" class="links-list">
+            <li><a class="link" href="files/sepsis.pdf" target="_blank" rel="noopener noreferrer">Sepsis - Adults</a></li>
+          </ul>
+        </li>
+
+        <li class="section">
+          <button class="section-heading" aria-expanded="true" aria-controls="s-spinal" id="btn-spinal">Spinal</button>
+          <ul id="s-spinal" class="links-list">
+            <li><a class="link" href="files/timeisspine.pdf" target="_blank" rel="noopener noreferrer">Time is Spine - Non-Traumatic Spinal Emergencies</a></li>
+          </ul>
+        </li>
+
+        <li class="section">
+          <button class="section-heading" aria-expanded="true" aria-controls="s-stroke" id="btn-stroke">Stroke</button>
+          <ul id="s-stroke" class="links-list">
+            <li><a class="link" href="files/codestrokeadults.pdf" target="_blank" rel="noopener noreferrer">Code Stroke - Adults</a></li>
+            <li><a class="link" href="files/codestrokepaediatrics.pdf" target="_blank" rel="noopener noreferrer">Code Stroke - Paediatrics</a></li>
+          </ul>
+        </li>
+
+        
+
+        <li class="section">
+          <button class="section-heading" aria-expanded="true" aria-controls="s-trauma" id="btn-trauma">Trauma</button>
+          <ul id="s-trauma" class="links-list">
+            <li><a class="link" href="files/traumaresponseadults.pdf" target="_blank" rel="noopener noreferrer">Trauma Response - Adults</a></li>
+            <li><a class="link" href="files/traumaresponsepaediatrics.pdf" target="_blank" rel="noopener noreferrer">Trauma Response - Paediatrics</a></li>
+          </ul>
+        </li>
       </ul>
     </nav>
+
+    <!-- Toggle script removed to keep sections permanently open -->
 
   </main>
 </body>
