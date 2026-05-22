@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Secondary Survey: Adults Head-To-Toe Assessment — Triage Guide</title>
+    <style>
+    :root{--bg:#f7f9fc;--card:#ffffff;--brand:#000000;--muted:#556}
+    html,body{height:100%}
+    body{font-family:Segoe UI,Arial,sans-serif;background:var(--bg);color:#111;margin:0}
+    .container{max-width:900px;margin:6vh auto;padding:24px;background:var(--card);border-radius:10px}
+    h1{margin:0 0 8px;font-size:1.4rem}
+    .back{display:inline-block;margin-top:18px;color:var(--muted)}
+    .section-heading{font-weight:700;text-decoration:underline;color:#111;margin-top:12px;font-size:1rem}
+    .links{list-style:circle inside;padding-left:6px;margin-top:6px}
+    button.link{background:none;border:0;padding:0;color:var(--brand);text-decoration:underline;cursor:pointer;font:inherit}
+    button.link:focus{outline:3px solid rgb(0, 0, 0);outline-offset:2px}
+    #vent-settings .links, #iv-fluids .links, #chest-ausc .links, #ett-details .links, #skin-details .links, #palpate-details .links, #identify-details .links, #situation-details .links, #background-details .links, #meds-indications .links, #meds-times .links{list-style-type:disc}
+    #vent-settings .links li::marker, #iv-fluids .links li::marker, #chest-ausc .links li::marker, #ett-details .links li::marker, #skin-details .links li::marker, #palpate-details .links li::marker, #identify-details .links li::marker, #situation-details .links li::marker, #background-details .links li::marker, #meds-indications .links li::marker, #meds-times .links li::marker{color:var(--brand)}
+    /* Lines, drains nested device bullets (filled + coloured) */
+    #lines-drains + ul.links li ul.links{list-style-type:disc;padding-left:22px;margin-top:4px}
+    #lines-drains + ul.links li ul.links li::marker{color:var(--brand)}
+    /* Nested lists inside ETT details use small square markers and larger indent */
+    #ett-details .links .links{list-style-type:square;padding-left:22px;margin-top:4px}
+    #ett-details .links .links li::marker{color:var(--brand)}
+    /* Results collapsible lists (filled + coloured) */
+    #abg-details .links, #cxr-details .links, #ecg-details .links {list-style-type:disc}
+    #abg-details .links li::marker, #cxr-details .links li::marker, #ecg-details .links li::marker{color:var(--brand)}
+    /* Pain scales collapsed list (filled + coloured) */
+    #pain-details .links{list-style-type:disc}
+    #pain-details .links li::marker{color:var(--brand)}
+    /* Sidebar image (right) - same sizing as paediatrics */
+    .sidebar-image{float:right;max-width:560px;width:56%;height:auto;margin-left:16px;margin-top:6px;border-radius:6px}
+    /* Colour feeding bullets */
+    #feeding-details .links{list-style-type:disc}
+    #feeding-details .links li::marker{color:var(--brand)}
+    /* Insensible losses collapsed list (filled + coloured) */
+    #insensible-details .links{list-style-type:disc}
+    #insensible-details .links li::marker{color:var(--brand)}
+  </style>
+</head>
+<body>
+  <main class="container" role="main">
+    <h1>Secondary Survey: Adults Head-To-Toe Assessment</h1>
+    <p class="back"><a href="patient-assessment.html">← Back to Patient Assessment</a></p>
+    <img src="files/vitalsigns.png" alt="Vital signs ranges" class="sidebar-image" />
+    <section>
+      <h2 class="section-heading">ISB</h2>
+      <ul class="links">
+        <li>
+          <button class="link toggle" aria-expanded="false" aria-controls="identify-details">Identify</button>
+          <div id="identify-details" hidden>
+            <ul class="links">
+              <li>Name</li>
+              <li>DOB</li>
+              <li>URN</li>
+              <li>GOC</li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <button class="link toggle" aria-expanded="false" aria-controls="situation-details">Situation</button>
+          <div id="situation-details" hidden>
+            <ul class="links">
+              <li>HOPC</li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <button class="link toggle" aria-expanded="false" aria-controls="background-details">Background</button>
+          <div id="background-details" hidden>
+            <ul class="links">
+              <li>Pmhx</li>
+              <li>Medications</li>
+              <li>Allergies</li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+      <h2 class="section-heading">Central Nervous System (CNS)</h2>
+      <ul class="links">
+        <li>GCS</li>
+        <li>PEARL</li>
+        <li>Sedation and paralysing agents</li>
+        <li>Limb strength</li>
+        <li>C-spine</li>
+        <li>Speech</li>
+        <li>
+          <button class="link toggle" aria-expanded="false" aria-controls="pain-details">Pain</button>
+          <div id="pain-details" hidden>
+            <ul class="links">
+              <li>CPOT</li>
+              <li>FLACC</li>
+              <li>FACES</li>
+              <li>0-10</li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+      <h2 class="section-heading">Respiratory</h2>
+      <ul class="links">
+        <li>RR</li>
+        <li>SpO2</li>
+        <li>ETCO2</li>
+        <li>
+          <button class="link toggle" aria-expanded="false" aria-controls="chest-ausc">Chest auscultation</button>
+          <div id="chest-ausc" hidden>
+            <ul class="links">
+              <li>Absent</li>
+              <li>Bronchial</li>
+              <li>Clear</li>
+              <li>Coarse/fine crackles</li>
+              <li>Diminished</li>
+              <li>Friction rub</li>
+              <li>Ronchi</li>
+              <li>Stridor</li>
+              <li>Wheeze (inspiratory/expiratory)</li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <button class="link toggle" aria-expanded="false" aria-controls="ett-details">ETT</button>
+          <div id="ett-details" hidden>
+            <ul class="links">
+                <li>Size</li>
+                <ul class="links">
+                    <li>Females typically 6.0-7.0mm</li>
+                    <li>Males typically 7.0-8.0mm</li>
+                </ul>
+              </li>
+              <li>Length/depth</li>
+                <ul class="links">
+                    <li>Tube size x 3.0</li>
+                </ul>
+              </li>
+              <li>Cuff pressure</li>
+                <ul class="links">
+                    <li>20-30mmHg</li>
+                </ul>
+              </li>
+              <li>Confirm position</li>
+                <ul class="links">
+                    <li>Chest auscultation</li>
+                    <li>ETCO2</li>
+                    <li>CXR</li>
+                    <li>Equal rise and fall of the chest</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <button class="link toggle" aria-expanded="false" aria-controls="vent-settings">Ventilator settings</button>
+          <div id="vent-settings" hidden>
+            <ul class="links">
+              <li>Mode</li>
+              <li>VC vs PC</li>
+              <li>FiO2</li>
+              <li>fRR</li>
+              <li>PEEP</li>
+              <li>PS</li>
+              <li>Vt</li>
+              <li>MV</li>
+              <li>PIP</li>
+              <li>Flow</li>
+              <li>Sensitivity</li>
+              <li>It</li>
+              <li>I:E</li>
+              <li>Check alarms</li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+      <h2 class="section-heading">Cardiovascular System (CVS)</h2>
+      <ul class="links">
+        <li>HR</li>
+        <li>BP</li>
+        <li>Pulses</li>
+        <li>CCRT</li>
+        <li>
+          <button class="link toggle" aria-expanded="false" aria-controls="skin-details">Skin</button>
+          <div id="skin-details" hidden>
+            <ul class="links">
+              <li>Colour</li>
+              <li>Warmth</li>
+              <li>Dry or clammy</li>
+            </ul>
+          </div>
+        </li>
+        <li>Heart sounds</li>
+        <li>JVP</li>
+        <li>Inotropes/vasopressors</li>
+        <li>Fluid resuscitation</li>
+        <li>Oedema</li>
+      </ul>
+      <h2 class="section-heading">Input/ouput</h2>
+      <ul class="links">
+        <li>Urine output</li>
+        <li>Stool output</li>
+        <li>
+          <button class="link toggle" aria-expanded="false" aria-controls="insensible-details">Insensible losses</button>
+          <div id="insensible-details" hidden>
+            <ul class="links">
+              <li>Respiratory tract</li>
+              <li>Skin</li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <button class="link toggle" aria-expanded="false" aria-controls="feeding-details">Feeding</button>
+          <div id="feeding-details" hidden>
+            <ul class="links">
+              <li>NGT/OGT</li>
+              <li>PO</li>
+              <li>TPN</li>
+            </ul>
+          </div>
+        </li>
+        <li>IV fluids</li>
+      </ul>
+      <h2 class="section-heading">Gastrointestinal tract (GIT)</h2>
+      <ul class="links">
+        <li>Inspect stomach</li>
+        <li>Auscultate bowel sounds</li>
+        <li>
+          <button class="link toggle" aria-expanded="false" aria-controls="palpate-details">Palpate</button>
+          <div id="palpate-details" hidden>
+            <ul class="links">
+              <li>Distension</li>
+              <li>Masses</li>
+              <li>Tenderness</li>
+              <li>Firm</li>
+              <li>Soft</li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+      <h2 class="section-heading">Skin Integrity</h2>
+      <ul class="links">
+        <li>Rash</li>
+        <li>Pressure areas</li>
+        <li>Localised abnormalities</li>
+      </ul>
+      <h2 id="lines-drains" class="section-heading">Lines, drains and devices</h2>
+      <ul class="links">
+        <li>
+          <button class="link toggle" aria-expanded="false" aria-controls="lines-cns">CNS</button>
+          <div id="lines-cns" hidden>
+            <ul class="links">
+              <li>EVD</li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <button class="link toggle" aria-expanded="false" aria-controls="lines-resp">Respiratory</button>
+          <div id="lines-resp" hidden>
+            <ul class="links">
+              <li>ETT</li>
+              <li>NPA/OPA</li>
+              <li>ICC/UWSD</li>
+              <li>Cardiac drains</li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <button class="link toggle" aria-expanded="false" aria-controls="lines-cvs">CVS</button>
+          <div id="lines-cvs" hidden>
+            <ul class="links">
+              <li>Arterial line (NV obs)</li>
+              <li>PIVC</li>
+              <li>CVC</li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <button class="link toggle" aria-expanded="false" aria-controls="lines-io">Input/output</button>
+          <div id="lines-io" hidden>
+            <ul class="links">
+              <li>IDC</li>
+              <li>PEG/PEJ</li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <button class="link toggle" aria-expanded="false" aria-controls="lines-git">GIT</button>
+          <div id="lines-git" hidden>
+            <ul class="links">
+              <li>NGT/OGT</li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+      <h2 class="section-heading">Medications</h2>
+      <ul class="links">
+        <li>Indications</li>
+        <li>Times</li>
+      </ul>
+        <h2 class="section-heading">Social</h2>
+        <ul class="links">
+          <li>Home life</li>
+          <li>Family</li>
+          <li>Occupation</li>
+          <li>Drugs, alcohol and smoking</li>
+          <li>Community supports</li>
+        </ul>
+      <h2 class="section-heading">Results</h2>
+      <ul class="links">
+        <li>
+          <button class="link toggle" aria-expanded="false" aria-controls="abg-details">ABG/VBG</button>
+          <div id="abg-details" hidden>
+            <ul class="links">
+              <li>Blood gas interpretation</li>
+              <li>Electrolyte imbalance</li>
+              <li>HB</li>
+              <li>Lactate</li>
+              <li>BGL</li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <button class="link toggle" aria-expanded="false" aria-controls="cxr-details">CXR</button>
+          <div id="cxr-details" hidden>
+            <ul class="links">
+              <li>Details</li>
+              <li>Rotation, inspiration, picture, exposure</li>
+              <li>Subcutaneous emphysema</li>
+              <li>Airway</li>
+              <li>Breathing/bones</li>
+              <li>Cardiac</li>
+              <li>Diaphragm</li>
+              <li>Extras</li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <button class="link toggle" aria-expanded="false" aria-controls="ecg-details">ECG</button>
+          <div id="ecg-details" hidden>
+            <ul class="links">
+              <li>Rhythm</li>
+              <li>Rate</li>
+              <li>P wave</li>
+              <li>PR interval</li>
+              <li>QRS complex</li>
+              <li>ST segment</li>
+              <li>T wave</li>
+              <li>QT interval</li>
+              <li>Interpretation</li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+      <h2 class="section-heading">Plan</h2>
+      <ul class="links">
+        <li>Imaging</li>
+        <li>Investigations</li>
+        <li>Referrals</li>
+        <li>Monitoring</li>
+        <li>Discharge planning</li>
+      </ul>
+    </section>
+    <script>
+      document.addEventListener('click', function (e) {
+        if (!e.target.classList) return;
+        if (e.target.classList.contains('toggle')) {
+          const btn = e.target;
+          const id = btn.getAttribute('aria-controls');
+          const panel = document.getElementById(id);
+          const expanded = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', String(!expanded));
+          if (panel) {
+            if (expanded) {
+              panel.hidden = true;
+            } else {
+              panel.hidden = false;
+            }
+          }
+        }
+      });
+    </script>
+  </main>
+</body>
+</html>
