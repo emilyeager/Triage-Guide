@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Calculators — Triage Guide</title>
+  <title>Calculator — Triage Guide</title>
     <style>
     :root{--bg:#f7f9fc;--card:#ffffff;--brand:#000000;--muted:#556}
     html,body{height:100%}
@@ -12,83 +12,141 @@
     h1{margin:0 0 8px;font-size:1.6rem}
     .back{display:inline-block;margin-top:18px;color:var(--muted)}
     .section-heading{font-weight:700;text-decoration:underline;color:#111;margin-top:12px;font-size:1rem}
-    .links{list-style:disc inside;padding-left:18px;margin-top:12px}
-    /* Calculator boxes */
-    .calc-box{border:1px solid #e6e9ee;padding:12px;border-radius:8px;margin:10px 0;background:var(--card)}
-    /* Remove number input spinners and disable autocomplete */
+    .calculator-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:14px}
+    .calc-box{border:1px solid #e6e9ee;padding:14px;border-radius:8px;background:var(--card)}
+    .calc-box h3{margin:0 0 8px;font-size:1rem}
+    .calc-value{font-size:1.1rem;font-weight:700;margin:6px 0 4px}
+    .calc-note{margin:0;color:var(--muted);font-size:.9rem;line-height:1.4}
+    .result-heading{margin:18px 0 6px;font-size:1.05rem}
+    .calc-formula{margin:6px 0 12px;color:var(--muted);font-size:.95rem}
+    .input-group{margin-top:14px;max-width:260px}
+    .input-group label{display:block;font-weight:600;margin-bottom:6px}
+    .input-group input{width:100%;padding:8px 10px;border:1px solid #cfd6df;border-radius:8px;font:inherit}
+    .age-hint{margin:8px 0 0;color:var(--muted);font-size:.9rem}
+    /* Remove number input spinners */
     input[type=number]::-webkit-outer-spin-button,
     input[type=number]::-webkit-inner-spin-button{ -webkit-appearance:none; margin:0 }
-    input[type=number]{-moz-appearance:textfield}
-    button.link{background:none;border:0;padding:0;color:var(--brand);text-decoration:underline;cursor:pointer;font:inherit}
-    button.link:focus{outline:3px solid rgb(0, 0, 0);outline-offset:2px}
-    .sidebar-image{float:right;max-width:560px;width:56%;height:auto;margin-left:16px;margin-top:6px;border-radius:6px}
+    input[type=number]{appearance:textfield;-moz-appearance:textfield}
   </style>
 </head>
 <body>
   <main class="container" role="main">
-    <h1>Calculators</h1>
+    <h1>Calculator</h1>
     <p class="back"><a href="index.html">← Back to Triage Guide Homepage</a></p>
     <section>
-      <h2 class="section-heading">Paediatrics Calculators</h2>
-      <ul class="links">
-        <li>ETT depth/length</li>
-        <li>
-          <button class="link toggle" aria-expanded="false" aria-controls="ett-size-panel">ETT size</button>
-          <div id="ett-size-panel" hidden>
-            <div class="calc">
-              <label for="uncuffed-age">Uncuffed ETT (Age/4 + 4)</label>
-              <input id="uncuffed-age" type="number" min="0" step="0.1" placeholder="Age in years" />
-              <div>Size: <output id="uncuffed-result">—</output> mm</div>
-            </div>
-            <div class="calc">
-              <label for="cuffed-age">Cuffed/microcuff ETT (Age/4 + 3.5)</label>
-              <input id="cuffed-age" type="number" min="0" step="0.1" placeholder="Age in years" />
-              <div>Size: <output id="cuffed-result">—</output> mm</div>
-            </div>
-          </div>
-        </li>
-        <li>Fluid maintenance</li>
-        <li>Weight</li>
-      </ul>
+      <div class="input-group">
+        <input id="age-years" type="number" min="0" step="0.1" inputmode="decimal" autocomplete="off" placeholder="Type age in years" />
+      </div>
+      <div class="input-group">
+        <input id="age-months" type="number" min="0" step="1" inputmode="numeric" autocomplete="off" placeholder="Type age in months" />
+      </div>
+
+      <div class="results-list">
+        <section aria-labelledby="ett-lip-title">
+          <h3 id="ett-lip-title" class="result-heading">ETT length — lip level</h3>
+          <div class="calc-value"><output id="ett-lip">—</output> cm</div>
+          <p class="calc-formula">Formula: lip = age / 2 + 12</p>
+        </section>
+
+        <section aria-labelledby="ett-nasal-title">
+          <h3 id="ett-nasal-title" class="result-heading">ETT length — nasal level</h3>
+          <div class="calc-value"><output id="ett-nasal">—</output> cm</div>
+          <p class="calc-formula">Formula: nasal = age / 2 + 15</p>
+        </section>
+
+        <section aria-labelledby="ett-size-title">
+          <h3 id="ett-size-title" class="result-heading">ETT size</h3>
+          <div class="calc-value">Uncuffed: <output id="ett-uncuffed">—</output> mm</div>
+          <div class="calc-value">Cuffed/microcuff: <output id="ett-cuffed">—</output> mm</div>
+          <p class="calc-formula">Formulas: uncuffed = age / 4 + 4; cuffed = age / 4 + 3.5</p>
+        </section>
+
+        <section aria-labelledby="maintenance-title">
+          <h3 id="maintenance-title" class="result-heading">Fluid maintenance rate</h3>
+          <div class="calc-value"><output id="maintenance-rate">—</output> mL/hr</div>
+          <p class="calc-formula">Formula: use 4/2/1 rule on estimated weight derived from (age + 4) × 2</p>
+        </section>
+
+        <section aria-labelledby="weight-title">
+          <h3 id="weight-title" class="result-heading">Weight</h3>
+          <div class="calc-value"><output id="estimated-weight">—</output> kg</div>
+          <p class="calc-formula">Formula: estimated weight = (age + 4) × 2</p>
+        </section>
+      </div>
     </section>
 
-    <style>
-      /* Calculators inputs */
-      #ett-size-panel .calc{margin:8px 0;padding:6px}
-      #ett-size-panel label{display:block;font-weight:600;margin-bottom:6px}
-      #ett-size-panel input{width:140px;padding:6px;border-radius:6px;border:1px solid #ccc}
-      #ett-size-panel output{font-weight:700;margin-left:6px}
-    </style>
-
     <script>
-      // Toggle handler for accessible collapsibles (reuse pattern from other pages)
-      document.addEventListener('click', function(e){
-        var btn = e.target.closest('button.toggle');
-        if(!btn) return;
-        var panel = document.getElementById(btn.getAttribute('aria-controls'));
-        var expanded = btn.getAttribute('aria-expanded') === 'true';
-        btn.setAttribute('aria-expanded', String(!expanded));
-        if(panel) panel.hidden = expanded;
+      function roundToOne(value) {
+        return (Math.round(value * 10) / 10).toFixed(1);
+      }
+
+      function estimateWeight(age) {
+        return (age + 4) * 2;
+      }
+
+      function maintenanceRate(weight) {
+        if (weight <= 10) return weight * 4;
+        if (weight <= 20) return 40 + ((weight - 10) * 2);
+        return 60 + (weight - 20);
+      }
+
+      var ageInput = document.getElementById('age-years');
+      var ageMonths = document.getElementById('age-months');
+      var ettLip = document.getElementById('ett-lip');
+      var ettNasal = document.getElementById('ett-nasal');
+      var ettUncuffed = document.getElementById('ett-uncuffed');
+      var ettCuffed = document.getElementById('ett-cuffed');
+      var maintenance = document.getElementById('maintenance-rate');
+      var weight = document.getElementById('estimated-weight');
+
+      function clearOutputs() {
+        ettLip.textContent = '—';
+        ettNasal.textContent = '—';
+        ettUncuffed.textContent = '—';
+        ettCuffed.textContent = '—';
+        maintenance.textContent = '—';
+        weight.textContent = '—';
+      }
+
+      function updateCalculations() {
+        var age = parseFloat(ageInput.value);
+        if (!isFinite(age) || age < 0) {
+          clearOutputs();
+          return;
+        }
+
+        var estimatedWeight = estimateWeight(age);
+        ettLip.textContent = roundToOne((age / 2) + 12);
+        ettNasal.textContent = roundToOne((age / 2) + 15);
+        ettUncuffed.textContent = roundToOne((age / 4) + 4);
+        ettCuffed.textContent = roundToOne((age / 4) + 3.5);
+        maintenance.textContent = roundToOne(maintenanceRate(estimatedWeight));
+        weight.textContent = roundToOne(estimatedWeight);
+      }
+
+      var _syncing = false;
+
+      ageInput.addEventListener('input', function(){
+        if(_syncing) return;
+        _syncing = true;
+        var v = parseFloat(ageInput.value);
+        if(isFinite(v)) ageMonths.value = Math.round(v * 12);
+        else ageMonths.value = '';
+        updateCalculations();
+        _syncing = false;
       });
 
-      function fmt(n){ return Math.round(n*10)/10; }
-      var uncInput = document.getElementById('uncuffed-age');
-      var uncOut = document.getElementById('uncuffed-result');
-      var cuffInput = document.getElementById('cuffed-age');
-      var cuffOut = document.getElementById('cuffed-result');
+      ageMonths.addEventListener('input', function(){
+        if(_syncing) return;
+        _syncing = true;
+        var m = parseFloat(ageMonths.value);
+        if(isFinite(m)) ageInput.value = (Math.round((m/12) * 10)/10).toFixed(1);
+        else ageInput.value = '';
+        updateCalculations();
+        _syncing = false;
+      });
 
-      function updateUnc(){
-        var v = parseFloat(uncInput.value);
-        if(isFinite(v)) uncOut.textContent = fmt(v/4 + 4).toFixed(1);
-        else uncOut.textContent = '—';
-      }
-      function updateCuff(){
-        var v = parseFloat(cuffInput.value);
-        if(isFinite(v)) cuffOut.textContent = fmt(v/4 + 3.5).toFixed(1);
-        else cuffOut.textContent = '—';
-      }
-      if(uncInput) uncInput.addEventListener('input', updateUnc);
-      if(cuffInput) cuffInput.addEventListener('input', updateCuff);
+      clearOutputs();
     </script>
   </main>
 </body>

@@ -12,67 +12,104 @@
     h1{margin:0 0 8px;font-size:1.6rem}
     .back{display:inline-block;margin-top:18px;color:var(--muted)}
     .section-heading{font-weight:700;text-decoration:underline;color:#111;margin-top:12px;font-size:1rem}
-    .links{list-style:disc inside;padding-left:18px;margin-top:12px}
+    .links{list-style-type:circle;padding-left:18px;margin-top:12px}
+    .links li::marker{color:#111}
+    .links ul{list-style-type:disc;padding-left:28px;margin-top:6px;color:#000}
+    .links ul li::marker{color:#000}
+    .toggle-link{background:none;border:0;padding:0;margin:0;font:inherit;color:#000;text-decoration:underline;cursor:pointer}
+    .toggle-link:focus{outline:3px solid rgba(3,102,214,0.18);outline-offset:2px}
+    #patency-details{list-style-type:disc;padding-left:28px;margin-top:6px;color:#000}
+    #chest-ausc-details{list-style-type:disc;padding-left:28px;margin-top:6px;color:#000}
+    #wob-details{list-style-type:disc;padding-left:28px;margin-top:6px;color:#000}
+    #perfusion-details{list-style-type:disc;padding-left:28px;margin-top:6px;color:#000}
+    #pulses-details{list-style-type:disc;padding-left:28px;margin-top:6px;color:#000}
+    #patency-details li::marker, #chest-ausc-details li::marker, #wob-details li::marker, #perfusion-details li::marker, #pulses-details li::marker{color:#000}
+    .gcs-img{float:right;width:40%;max-width:420px;margin:20mm 50mm 12px 12px}
   </style>
 </head>
 <body>
   <main class="container" role="main">
-    <h1>Primary Survey: DRSABCDE Assessment</h1>
+    <h1>Primary Survey: ABCDEFG Assessment</h1>
+    <img src="files/GCS.png" alt="Glasgow Coma Scale" class="gcs-img">
     <p class="back"><a href="patient-assessment.html">← Back to Patient Assessment</a></p>
-
-    <section>
-      <p class="section-heading">Dangers</p>
-      <ul class="links">
-        <li>Name band</li>
-        <li>Infection control/PPE</li>
-        <li>Hazards</li>
-        <li>Crash cart</li>
-        <li>Alarm settings</li>
-        <li>Safety checks</li>
-      </ul>
-    </section>
-
-     <section>
-      <p class="section-heading">Response</p>
-      <ul class="links">
-        <li>AVPU</li>
-      </ul>
-    </section>
-
-    <section>
-      <p class="section-heading">Send for help</p>
-      <ul class="links">
-        <li>Red flags</li>
-        <li>Call for help</li>
-        <li>Emergency buzzer</li>
-      </ul>
-    </section>
 
     <section>
       <p class="section-heading">Airway</p>
       <ul class="links">
-        <li>Patency</li>
+        <li>
+          <button id="btn-patency" class="toggle-link" aria-expanded="false" aria-controls="patency-details">Patency</button>
+          <ul id="patency-details" class="links" hidden>
+            <li>Gurgling</li>
+            <li>Stridor</li>
+            <li>Snoring</li>
+            <li>Reduced air movement</li>
+            <li>Foreign body</li>
+            <li>Neck/facial swelling</li>
+            <li>Secretions eg: vomit, blood</li>
+            <li>Neck/facial trauma</li>
+            <li>Tracheal deviation</li>
+          </ul>
+        </li>
       </ul>
     </section>
 
     <section>
       <p class="section-heading">Breathing</p>
       <ul class="links">
+        <li>RR</li>
+        <li>
+          <button id="btn-wob" class="toggle-link" aria-expanded="false" aria-controls="wob-details">WOB</button>
+          <ul id="wob-details" class="links" hidden>
+            <li>Accessory muscle use</li>
+            <li>Nasal flaring</li>
+            <li>Tracheal tug</li>
+          </ul>
+        </li>
+        <li>SpO2</li>
+        <li>ETCO2</li>
+        <li>
+          <button id="btn-chest-ausc" class="toggle-link" aria-expanded="false" aria-controls="chest-ausc-details">Chest auscultation</button>
+          <ul id="chest-ausc-details" class="links" hidden>
+            <li>Absent</li>
+            <li>Bronchial</li>
+            <li>Clear</li>
+            <li>Coarse/fine crackles</li>
+            <li>Diminished</li>
+            <li>Friction rub</li>
+            <li>Ronchi</li>
+            <li>Stridor</li>
+            <li>Wheeze (inspiratory/expiratory)</li>
+          </ul>
+        </li>
         <li>Spontaneous breaths</li>
         <li>Chest rise and fall</li>
         <li>Sup O2/HFNP/NIV/MV</li>
-        <li>SpO2</li>
-        <li>RR</li>
-        <li>ETCO2</li>
       </ul>
     </section>
 
     <section>
       <p class="section-heading">Circulation</p>
       <ul class="links">
-        <li>BP</li>
         <li>HR</li>
-        <li>PWP</li>
+        <li>BP</li>
+        <li>ECG</li>
+        <li>
+          <button id="btn-pulses" class="toggle-link" aria-expanded="false" aria-controls="pulses-details">Pulses</button>
+          <ul id="pulses-details" class="links" hidden>
+            <li>Regular vs irregular</li>
+            <li>Strong vs weak</li>
+          </ul>
+        </li>
+        <li>Bleeding</li>
+        <li>
+          <button id="btn-perfusion" class="toggle-link" aria-expanded="false" aria-controls="perfusion-details">Perfusion</button>
+          <ul id="perfusion-details" class="links" hidden>
+            <li>Colour</li>
+            <li>Skin temperature</li>
+            <li>Central/peripheral capillary refill time</li>
+            <li>Dry vs clammy</li>
+          </ul>
+        </li>
       </ul>
     </section>
 
@@ -81,8 +118,22 @@
       <ul class="links">
         <li>GCS</li>
         <li>Pain</li>
-        <li>Temperature</li>
-        <li>BGL</li>
+        <li>
+          <button id="btn-pupils" class="toggle-link" aria-expanded="false" aria-controls="pupils-details">Pupils</button>
+          <ul id="pupils-details" class="links" hidden>
+            <li>Reactivity</li>
+            <li>Size</li>
+            <li>Equality</li>
+          </ul>
+        </li>
+        <li>Limb strength and sensation</li>
+        <li>
+          <button id="btn-mental-status" class="toggle-link" aria-expanded="false" aria-controls="mental-status-details">Mental status</button>
+          <ul id="mental-status-details" class="links" hidden>
+            <li>Confusion</li>
+            <li>Agitation</li>
+          </ul>
+        </li>
       </ul>
     </section>
 
@@ -90,10 +141,67 @@
       <p class="section-heading">Exposure</p>
       <ul class="links">
         <li>Rash</li>
-        <li>Obvious injuries</li>
+        <li>Injuries</li>
+        <li>Pressure areas</li>
+<li>
+          <button id="btn-abdomen" class="toggle-link" aria-expanded="false" aria-controls="abdomen-details">Abdomen</button>
+          <ul id="abdomen-details" class="links" hidden>
+            <li>Distension</li>
+            <li>Masses</li>
+            <li>Tenderness</li>
+            <li>Guarding</li>
+            <li>Soft vs firm</li>
+          </ul>
+        </li>
+        <li>Wounds</li>
+        <li>Temperature</li>
+      </ul>
+    </section>
+
+    <section>
+      <p class="section-heading">Fluids</p>
+      <ul class="links">
+        <li>Oedema</li>
+        <li>
+          <button id="btn-fluid-input" class="toggle-link" aria-expanded="false" aria-controls="fluid-input-details">Fluid input</button>
+          <ul id="fluid-input-details" class="links" hidden>
+            <li>Parenteral eg: IVF, TPN</li>
+            <li>Enteral eg: NGT, NJT, PO</li>
+          </ul>
+        </li>
+        <li>
+          <button id="btn-fluid-output" class="toggle-link" aria-expanded="false" aria-controls="fluid-output-details">Fluid output</button>
+          <ul id="fluid-output-details" class="links" hidden>
+            <li>Urine</li>
+            <li>Insensible losses eg: sweat, respiration</li>
+            <li>Vomiting and diarrhoea</li>
+            <li>Drains</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <p class="section-heading">Glucose</p>
+      <ul class="links">
+        <li>BGL</li>
       </ul>
     </section>
 
   </main>
+  <script>
+    (function(){
+      var toggles = document.querySelectorAll('.toggle-link[aria-controls]');
+      toggles.forEach(function(btn){
+        var details = document.getElementById(btn.getAttribute('aria-controls'));
+        btn.addEventListener('click', function(){
+          var expanded = this.getAttribute('aria-expanded') === 'true';
+          this.setAttribute('aria-expanded', String(!expanded));
+          if (!details) return;
+          if (details.hasAttribute('hidden')) details.removeAttribute('hidden'); else details.setAttribute('hidden','');
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
